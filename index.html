@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h3>Watch Test</h3>
+    <img data-src="holder.js/300x200?outline=yes&theme=lava">
+    <h1>{{ site.env | upcase }}</h1>
+    <h2>{{ site.title | downcase }}</h2>
+    <h3>{{ jekyll.environment | remove: 'ment' }}</h3>
+    <h3>jekyll.environment - truncated : {{ jekyll.environment | truncate: 3, '' }}</h3>  
+    <h4>site.title - truncated: {{ site.title | truncate: 3, '' }}</h4>  
+    <h5>Site Env Prd: {{ site.env.prd }}</h5>
+    <h5>Site Env Stg: {{ site.env.stg }}</h5>
+    <h5>Site Env Dev: {{ site.env.dev }}</h5>
+    <h5>Site Env is NIL: {% if site.env.dev == NIL %}True{% else %}False{% endif %}</h5>
+    <h5>Site Env is equal to Repo name: {% if site.env.dev == site.github.repository_name %}True{% else %}False{% endif %}</h5>
+
+<h1>Scalable iPhone5 HTML5 mockup.</h1>
+
+<div class="device-mockup" data-device="galaxy_s5" data-orientation="portrait" data-color="white">
+  <div class="device">
+    <div class="screen">
+    <!-- PUT CONTENTS HERE -->
+    <h2>Hello...</h2>
+    </div>
+    <div class="button">
+    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+    </div>
+  </div>
+</div>
+
+<img data-src="holder.js/800x600?outline=yes&theme=lava">
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>

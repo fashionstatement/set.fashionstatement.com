@@ -1,0 +1,33 @@
+{
+  "name": "Framheim",
+  "authors": [
+    "Remy Schrader"
+  ],
+  "description": "Opinionated build template for publishing to Github Pages using nodejs and ruby.",
+  "main": "package.json",
+  "keywords": [
+    "web",
+    "build",
+    "ruby",
+    "github-pages",
+    "jekyll",
+    "deployment",
+    "template"
+  ],
+  "license": "MIT",
+  "homepage": "http://framheim.rootandflow.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "FitText.js": "~1.2.0",
+    "foundation": "~5.5.2",
+    "html5-device-mockups": "git+https://github.com/pixelsign/html5-device-mockups#2fcdcff8375579af739b266e4436525088076972",
+    "normalize-scss": "~3.0.3"
+  },
+  "private": true
+}
