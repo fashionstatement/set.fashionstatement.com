@@ -1,0 +1,53 @@
+{
+  "name": "Framheim",
+  "version": "0.1.0",
+  "description": "Opinionated build template for publishing to Github Pages using nodejs and ruby.",
+  "dependencies": {
+    "webfontloader": "^1.6.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^5.2.0",
+    "browser-sync": "^2.8.2",
+    "browserify": "^11.0.1",
+    "cpy": "^3.4.0",
+    "cssmin": "^0.4.3",
+    "deamdify": "^0.1.1",
+    "debowerify": "^1.3.1",
+    "envify": "^3.4.0",
+    "favicons": "^3.1.3",
+    "hashmark": "^3.0.0",
+    "holderjs": "^2.8.2",
+    "jshint": "^2.8.0",
+    "karma": "^0.13.9",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.2.0",
+    "parallelshell": "^2.0.0",
+    "postcss-cli": "^2.0.0",
+    "rimraf": "^2.4.3",
+    "uglify-js": "^2.4.24",
+    "uglifyify": "^3.0.1",
+    "underscore": "^1.8.3",
+    "watch": "^0.16.0"
+  },
+  "scripts": {
+    "build:dev": "",
+    "build:jekyll": "jekyll build",
+    "build:jekyll:local": "npm run build:jekyll -- --config _config.yml,_config_dev.yml",
+    "prebuild:js": "npm run lint:js",
+    "build:js": "npm run build:js:dev && npm run build:js:vendor && npm run build:js:site",
+    "build:js:dev": "browserify -d -t debowerify -t deamdify _dev/scripts/dev.js | uglifyjs -c > dst/scripts/dev.js",
+    "build:js:site": "browserify -d -t debowerify -t deamdify _dev/scripts/site.js | uglifyjs -c > dst/scripts/site.js",
+    "build:js:vendor": "browserify -t debowerify -t deamdify _dev/scripts/vendor.js | uglifyjs -c > dst/scripts/vendor.js",
+    "lint:js": "jshint _dev/scripts; exit 0",
+    "start": "npm run build:js && parallelshell 'npm run watch:js' 'npm run watch' 'npm run sync'",
+    "sync": "browser-sync start --files \"_site/**/*\" --server _site --index index.html",
+    "vendor:css": "npm run vendor:css:normalize && npm run vendor:css:devices",
+    "vendor:css:normalize": "cpy 'bower_components/normalize-scss/_normalize.scss' _sass",
+    "vendor:css:devices": "node _bld/scripts/devices.js",
+    "watch": "npm run watch:jekyll:local",
+    "watch:jekyll": "jekyll serve",
+    "watch:jekyll:local": "npm run watch:jekyll -- --config _config.yml,_config_dev.yml",
+    "watch:js": "watch 'npm run build:js' _dev/scripts/ -du"
+  },
+  "private": true
+}
